@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS lists (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	folder TEXT NOT NULL,
+	branch TEXT NOT NULL,
+	UNIQUE (folder, branch)
+);
+
+CREATE TABLE IF NOT EXISTS todos (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	list_id INTEGER NOT NULL,
+	description TEXT NOT NULL,
+	done INTEGER NOT NULL DEFAULT 0,
+	FOREIGN KEY(list_id) REFERENCES lists(id)
+);
+
+CREATE INDEX IF NOT EXISTS todos.list_id_idx ON todos(list_id); 
+
+
