@@ -38,7 +38,7 @@ func init() {
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
 	// createCmd.PersistentFlags().String("foo", "", "A help for foo")
-	listCmd.Flags().BoolVarP(&git, "no-git", "g", true, "Use to disable linking with git branches")
+	initCmd.Flags().BoolVarP(&git, "no-git", "g", true, "Use to disable linking with git branches")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
