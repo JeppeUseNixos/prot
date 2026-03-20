@@ -1,0 +1,5 @@
+d2f38dbbd5bc71bb0bfd4265f2ba647a4baf2d9ba56748d4e3d74bbbee5594c4  prot-1.0.1-darwin-amd64.tar.gz
+79707989bb9da5ea78328e04ce9ddc9d5696c80b720d1decec3a6c2a6be67911  prot-1.0.1-darwin-arm64.tar.gz
+cef5d2641d54f326d5b2c882639997fcf90ce952b12c3ad968e2ca5da6cb25a0  prot-1.0.1-linux-amd64.tar.gz
+ddc5a42e29c4122d4463206407240b8af9c867e19a7759ebc986a94b120eced1  prot-1.0.1-linux-arm64.tar.gz
+8a8c7bc1cc2db84c6ca4f600a65646707db9866cff7df0de3636ce2ae626915c  prot-1.0.1-windows-amd64.zip
