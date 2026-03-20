@@ -58,23 +58,24 @@ func (s *Instance) CreateListGit(ctx context.Context) error {
 	return nil
 }
 
-func (s *Instance) CreateTodo(ctx context.Context, description string) error {
+func (s *Instance) CreateTodo(ctx context.Context, description string) (db.Todo, error) {
+	var todo db.Todo
 	listInfo, err := getFolderAndBranch()
 	if err != nil {
-		return err
+		return todo, err
 	}
 	id, err := s.Store.GetListIdByFolderBranch(ctx, db.GetListIdByFolderBranchParams(listInfo))
 	if err != nil {
-		return fmt.Errorf("cannot find list for folder and branch: %s", err)
+		return todo, fmt.Errorf("cannot find list for folder and branch: %s", err)
 	}
-	_, err = s.Store.CreateTodo(ctx, db.CreateTodoParams{
+	todo, err = s.Store.CreateTodo(ctx, db.CreateTodoParams{
 		Description: description,
 		ListID:      id,
 	})
 	if err != nil {
-		return err
+		return todo, err
 	}
-	return nil
+	return todo, nil
 }
 
 func (s *Instance) GetTodos(ctx context.Context) ([]db.Todo, error) {

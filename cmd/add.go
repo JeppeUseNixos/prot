@@ -5,7 +5,9 @@ package cmd
 
 import (
 	"fmt"
+	"os"
 	"strings"
+	"text/tabwriter"
 
 	"github.com/spf13/cobra"
 )
@@ -17,10 +19,15 @@ var addCmd = &cobra.Command{
 	Args: cobra.MinimumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		description := strings.Join(args, " ")
-		err := Instance.CreateTodo(cmd.Context(), description)
+		todo, err := Instance.CreateTodo(cmd.Context(), description)
 		if err != nil {
 			return fmt.Errorf("failed to create todo: %s", err)
 		}
+		w := tabwriter.NewWriter(os.Stdout, 0, 0, 4, ' ', 0)
+		fmt.Println("Created new todo:")
+		fmt.Fprintln(w, "Id\tDescription\tDone")
+		fmt.Fprintf(w, "%v\t%s\t%v\n", todo.ID, todo.Description, todo.Done == 1)
+		w.Flush()
 		return nil
 	},
 }
