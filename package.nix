@@ -25,7 +25,7 @@
 					owner = "z3co";
 					repo = "protv2";
 					tag = "v${version}";
-					hash = "sha256-dELBbBPBCEXR9iBDcsmp1rYBC/508txKbKsNGsGcLwc=";
+					hash = "sha256-pzO/Ema7Vnw3tEyj7RU2TFYQarn4rgH8RUBwGsT/lD4=";
 				};
 				vendorHash = "sha256-1xQSQTUZUzykz8YXVnIp5bImU9cJCODiA3cWeb852w0=A";
 			};
