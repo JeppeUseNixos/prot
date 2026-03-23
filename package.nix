@@ -22,8 +22,8 @@
 				pname = "prot";
 				inherit version ldflags;
 				src = pkgs.fetchFromGitHub {
-					owner = "z3co";
-					repo = "protv2";
+					owner = "JeppeUseNixos";
+					repo = "prot";
 					tag = "v${version}";
 					hash = "sha256-pzO/Ema7Vnw3tEyj7RU2TFYQarn4rgH8RUBwGsT/lD4=";
 				};
