@@ -2,6 +2,7 @@ package logic
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"os"
 	"os/exec"
@@ -117,4 +118,27 @@ func (s *Instance) DeleteTodo(ctx context.Context, id int64) error {
 		return err
 	}
 	return nil
+}
+
+func (s *Instance) ExportList(ctx context.Context) error {
+	type jsonStruct struct {
+		ID int64 `json:"id"`
+		ListID int64 `json:"list_id"`
+		Description string `json:"description"`
+		Done int64 `json:"done"`
+	}
+	todos, err := s.GetTodos(ctx)
+	if err != nil {
+		return err
+	}
+	jsonText, err := json.Marshal(todos)
+	if err != nil {
+		return err
+	}
+	err = os.WriteFile("todos.json", jsonText, 0664)
+	if err != nil {
+		return err
+	}
+	return nil
+
 }
