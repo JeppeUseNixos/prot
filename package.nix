@@ -25,7 +25,7 @@
 					owner = "JeppeUseNixos";
 					repo = "prot";
 					tag = "v${version}";
-					hash = "sha256-pzO/Ema7Vnw3tEyj7RU2TFYQarn4rgH8RUBwGsT/lD4=";
+					hash = "sha256-L/vY5/KzIB4R7JC+louQaTzLj5Axney/Vp71mZGXqdo=";
 				};
 				vendorHash = "sha256-1xQSQTUZUzykz8YXVnIp5bImU9cJCODiA3cWeb852w0=A";
 			};
