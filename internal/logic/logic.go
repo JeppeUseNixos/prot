@@ -120,13 +120,30 @@ func (s *Instance) DeleteTodo(ctx context.Context, id int64) error {
 	return nil
 }
 
-func (s *Instance) ExportList(ctx context.Context) error {
-	type jsonStruct struct {
-		ID int64 `json:"id"`
-		ListID int64 `json:"list_id"`
-		Description string `json:"description"`
-		Done int64 `json:"done"`
+func (s *Instance) DeleteList(ctx context.Context) error {
+	listInfo, err := getFolderAndBranch()
+	if err != nil {
+		return err
 	}
+	id, err := s.Store.GetListIdByFolderBranch(ctx, db.GetListIdByFolderBranchParams(listInfo))
+	if err != nil {
+		return err
+	}
+	err = s.Store.DeleteList(ctx, id)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+type jsonStruct struct {
+	ID int64 `json:"id"`
+	ListID int64 `json:"list_id"`
+	Description string `json:"description"`
+	Done int64 `json:"done"`
+}
+
+func (s *Instance) ExportList(ctx context.Context) error {
 	todos, err := s.GetTodos(ctx)
 	if err != nil {
 		return err
@@ -141,4 +158,23 @@ func (s *Instance) ExportList(ctx context.Context) error {
 	}
 	return nil
 
+}
+
+func (s *Instance) ImportList(ctx context.Context, filepath string) error {
+	content, err := os.ReadFile(filepath)
+	if err != nil {
+		return err
+	}
+	var jsonData []jsonStruct
+	err = json.Unmarshal(content, &jsonData)
+	if err != nil {
+		return err
+	}
+	for _, row := range jsonData {
+		_, err := s.CreateTodo(ctx, row.Description)
+		if err != nil {
+			return err 
+		}
+	}
+	return nil
 }
