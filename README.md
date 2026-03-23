@@ -1,3 +1,6 @@
+# Prot
+Prot is a project based todolist the todolist is connected to the folder you are in and the git branch you are on
+
 ## Installation
 Nix 
 ```sh
