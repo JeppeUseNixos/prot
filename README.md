@@ -4,11 +4,11 @@ Prot is a project based todolist the todolist is connected to the folder you are
 ## Installation
 Nix 
 ```sh
-nix profile add github:z3co/protv2
+nix profile add github:JeppeUseNixos/prot
 ```
 Other linux 
 ```sh
-curl -sSL https://raw.githubusercontent.com/z3co/protv2/refs/heads/main/install.sh | sh
+curl -sSL https://raw.githubusercontent.com/JeppeUseNixos/prot/refs/heads/main/install.sh | sh
 ```
 Windows
 Download the zip and place the exe in your path
